@@ -72,7 +72,8 @@ module.exports = {
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    "\\.(css|less)$": "identity-obj-proxy"
+    "\\.(css|less)$": "identity-obj-proxy",
+    "^ideogram$": "ideogram/dist/js/ideogram.min.js"
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
