@@ -162,7 +162,7 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    "^.+\\.fasta": "jest-raw-loader",
+    "^.+(\\.fasta|\\.xyz)": "jest-raw-loader",
     "^.+\\.[t|j]sx?$": "babel-jest"
   },
 
