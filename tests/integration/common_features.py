@@ -1,7 +1,6 @@
 from dash.dependencies import Input, Output, State
 import dash_html_components as html
 import dash_core_components as dcc
-from time import sleep
 
 PASS = 'passed'
 FAIL = 'failed'
@@ -22,7 +21,6 @@ def simple_app_layout(
 def simple_app_callback(
         app,
         dash_duo,
-        component,
         component_id,
         test_prop_name,
         test_prop_value,

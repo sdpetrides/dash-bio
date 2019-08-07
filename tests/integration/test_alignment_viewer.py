@@ -23,7 +23,6 @@ def test_dbav001_hide_conservation(dash_duo):
     simple_app_callback(
         app,
         dash_duo,
-        dash_bio.AlignmentChart(id='test-alignment-chart', data=_data),
         'test-alignment-chart',
         'showconservation',
         'False',
@@ -46,7 +45,6 @@ def test_dbav002_change_colorscale(dash_duo):
     simple_app_callback(
         app,
         dash_duo,
-        dash_bio.AlignmentChart(id='test-alignment-chart', data=_data),
         'test-alignment-chart',
         'colorscale',
         'hydro',
@@ -64,7 +62,6 @@ def test_dbav003_change_conservation_colorscale(dash_duo):
     simple_app_callback(
         app,
         dash_duo,
-        dash_bio.AlignmentChart(id='test-alignment-chart', data=_data),
         'test-alignment-chart',
         'conservationcolorscale',
         'Blackbody'
