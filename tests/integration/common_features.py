@@ -25,7 +25,8 @@ def simple_app_callback(
         test_prop_name,
         test_prop_value,
         process_value=None,
-        validation_fn=None
+        validation_fn=None,
+        take_snapshot=False
 ):
     if validation_fn is None:
         def validation_fn(x): return x == test_prop_value
@@ -68,6 +69,7 @@ def simple_app_callback(
 
     dash_duo.wait_for_element('#passfail')
 
-    dash_duo.percy_snapshot(f'{component_id}_{test_prop_name}_{test_prop_value}')
+    if take_snapshot:
+        dash_duo.percy_snapshot(f'{component_id}_{test_prop_name}_{test_prop_value}')
     
     assert dash_duo.find_element('#passfail').text == PASS
