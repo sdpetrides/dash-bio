@@ -30,8 +30,7 @@ def test_dbav001_hide_conservation(dash_duo):
         validation_fn=lambda x: x is False
     )
 
-    # TODO also assert that the length of the list containing all elements
-    # returned by the selector for the conservation bar plot is 0
+    assert len(dash_duo.find_elements('g.cartesianlayer.xy3')) == 0
 
 
 def test_dbav002_change_colorscale(dash_duo):
@@ -48,7 +47,12 @@ def test_dbav002_change_colorscale(dash_duo):
         'test-alignment-chart',
         'colorscale',
         'hydro',
+        take_snapshot=True
     )
+
+    # the heatmap background is an image, so we can't programmatically
+    # assert that the colors are correct; this test requires a look at
+    # the Percy snapshot that is taken
 
 
 def test_dbav003_change_conservation_colorscale(dash_duo):
@@ -66,3 +70,9 @@ def test_dbav003_change_conservation_colorscale(dash_duo):
         'conservationcolorscale',
         'Blackbody'
     )
+
+    # first bar should be black
+    dash_duo.wait_for_style_to_equal('#test-alignment-chart > div > div > div > div > svg:nth-child(1) > g.cartesianlayer > g.subplot.xy2 > g.plot > g > g > g > g:nth-child(1) > path', 'fill', 'rgb(0, 0, 0)')
+
+    # second bar should be this orange color
+    dash_duo.wait_for_style_to_equal('#test-alignment-chart > div > div > div > div > svg:nth-child(1) > g.cartesianlayer > g.subplot.xy2 > g.plot > g > g > g > g:nth-child(2) > path', 'fill', 'rgb(230, 103, 0)')
