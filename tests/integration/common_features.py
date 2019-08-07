@@ -42,11 +42,15 @@ def simple_app_callback(
         if nclicks is not None and nclicks > 0:
             return process_value(value)
         return None
+
     @app.callback(
         Output('pass-fail-div', 'children'),
-        [Input(component_id, test_prop_name)]
+        [Input(component_id, test_prop_name)],
+        [State('submit-prop-button', 'n_clicks')]
     )
-    def simple_callback(prop_value):
+    def simple_callback(prop_value, nclicks):
+        if nclicks is None or nclicks == 0:
+            return None
         passfail = PASS if validation_fn(prop_value) else FAIL
         return html.Div(passfail, id='passfail')
 
