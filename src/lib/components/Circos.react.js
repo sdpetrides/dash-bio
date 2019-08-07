@@ -173,7 +173,7 @@ export default class Circos extends Component {
 
     configCircos(layout, config, tracks, setProps) {
         this.circos.layout(layout, config);
-        tracks.forEach((track, index) => {
+        tracks && tracks.forEach((track, index) => {
             const {id, data, config, type} = track;
 
             // Since config is const, can't manipulate and throws error
