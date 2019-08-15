@@ -72,7 +72,13 @@ def test_dbav003_change_conservation_colorscale(dash_duo):
     )
 
     # first bar should be black
-    dash_duo.wait_for_style_to_equal('#test-alignment-chart > div > div > div > div > svg:nth-child(1) > g.cartesianlayer > g.subplot.xy2 > g.plot > g > g > g > g:nth-child(1) > path', 'fill', 'rgb(0, 0, 0)')
+    dash_duo.wait_for_style_to_equal(
+        '#test-alignment-chart > div > div > div > div > svg:nth-child(1) > '
+        'g.cartesianlayer > g.subplot.xy2 > g.plot > g > g > g > '
+        'g:nth-child(1) > path', 'fill', 'rgb(0, 0, 0)')
 
     # second bar should be this orange color
-    dash_duo.wait_for_style_to_equal('#test-alignment-chart > div > div > div > div > svg:nth-child(1) > g.cartesianlayer > g.subplot.xy2 > g.plot > g > g > g > g:nth-child(2) > path', 'fill', 'rgb(230, 103, 0)')
+    dash_duo.wait_for_style_to_equal(
+        '#test-alignment-chart > div > div > div > div > svg:nth-child(1) > '
+        'g.cartesianlayer > g.subplot.xy2 > g.plot > g > g > g > '
+        'g:nth-child(2) > path', 'fill', 'rgb(230, 103, 0)')

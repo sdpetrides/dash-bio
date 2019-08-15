@@ -63,7 +63,9 @@ def test_dbci002_inner_outer_radii(dash_duo):
         'config',
         json.dumps(change_radii_config),
         process_value=lambda x: json.loads(x),
-        validation_fn=lambda x: x['innerRadius'] == change_radii_config['innerRadius'] and x['outerRadius'] == change_radii_config['outerRadius']
+        validation_fn=lambda x:
+        x['innerRadius'] == change_radii_config['innerRadius']
+        and x['outerRadius'] == change_radii_config['outerRadius']
     )
 
     chr_one_div = dash_duo.find_element('path#chr1')
