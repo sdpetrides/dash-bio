@@ -71,6 +71,7 @@ jobs:
                     . venv/bin/activate
                     pip install --upgrade pip
                     pip install -r tests/requirements.txt --quiet
+                    pip install dash[testing]
 
             - save_cache:
                 key: deps1-{{ .Branch }}-{{ checksum "tests/requirements.txt" }}
