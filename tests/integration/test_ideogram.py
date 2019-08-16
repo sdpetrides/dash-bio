@@ -30,7 +30,10 @@ def test_dbid001_displayed_chromosomes(dash_duo):
         validation_fn=lambda x: json.dumps(x) == json.dumps(chromosome_set_new)
     )
 
-    assert len(dash_duo.find_elements('g.chromosome-set-container')) == 5
+    WebDriverWait(dash_duo.driver, 1).until(
+        lambda _:
+        len(dash_duo.find_elements('g.chromosome-set-container')) == 5
+    )
 
 
 def test_dbid002_click_rotation(dash_duo):
