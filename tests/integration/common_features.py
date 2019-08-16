@@ -99,6 +99,7 @@ def nested_component_app_callback(
         component_data,
         test_prop_name,
         test_prop_value,
+        data_prop_name='data',
         extra_props=None,
         process_value=None,
         path_to_test_prop=None,
@@ -108,8 +109,12 @@ def nested_component_app_callback(
     if process_value is None:
         def process_value(x): return x
 
-    if extra_props is None:
-        extra_props = {}
+    component_props = {}
+
+    if extra_props is not None:
+        component_props = extra_props
+
+    component_props[data_prop_name] = component_data
 
     @app.callback(
         Output('test-graph', 'figure'),
@@ -118,13 +123,8 @@ def nested_component_app_callback(
     )
     def setup_click_callback(nclicks, prop_value):
         if nclicks is not None and nclicks > 0:
-            extra_props[test_prop_name] = process_value(prop_value)
-            print(extra_props)
-            return component(
-                data=component_data,
-                **extra_props
-            )
-        return component(data=component_data)
+            component_props[test_prop_name] = process_value(prop_value)
+        return component(**component_props)
 
     @app.callback(
         Output('pass-fail-div', 'children'),
