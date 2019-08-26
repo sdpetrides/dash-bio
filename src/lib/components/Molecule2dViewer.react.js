@@ -107,8 +107,8 @@ Molecule2dViewer.propTypes = {
         links: PropTypes.arrayOf(
             PropTypes.shape({
                 id: PropTypes.number,
-                source: PropTypes.number,
-                target: PropTypes.number,
+                source: PropTypes.number | PropTypes.shape,
+                target: PropTypes.number | PropTypes.shape,
                 bond: PropTypes.number,
                 strength: PropTypes.number,
                 distance: PropTypes.number,
